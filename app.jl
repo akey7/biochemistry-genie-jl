@@ -17,7 +17,7 @@ end
 
 function ui()
     row([
-    cell(class="st-col col-3", [
+    cell(class="st-col col-6", [
         h1("A simple dashboard"),
         slider(1:1000, :N),
         p("The average of {{N}} random numbers is {{m}}", class="st-module"),
