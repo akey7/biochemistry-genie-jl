@@ -1,5 +1,4 @@
 module App
-using Main.StatisticAnalysis
 using Main.Hill
 using GenieFramework, PlotlyBase
 @genietools
