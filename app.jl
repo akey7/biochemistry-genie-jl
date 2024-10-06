@@ -11,7 +11,7 @@ using GenieFramework, PlotlyBase
     @out hill_coeff_out = 1.0
     @onchange hill_coeff_in begin
         hill_coeff_out = round(hill_coeff_in, digits=2)
-        # trace1 = [histogram(x = x)]
+        trace2 = [PlotlyBase.scatter(x = ligand_concentrations(), y = hill_eqn(1.0e-3, hill_coeff_in))]
     end
 end
 
