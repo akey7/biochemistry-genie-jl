@@ -1,9 +1,9 @@
-module Hill 
+module Hill
 
 export hill_eqn, ligand_concentrations
 
 function ligand_concentrations()
-    collect(range(start=0.0, stop=2.5e-3, length=100))
+    collect(range(start = 0.0, stop = 2.5e-3, length = 100))
 end
 
 function hill_eqn(ka::Float64, n::Float64)
