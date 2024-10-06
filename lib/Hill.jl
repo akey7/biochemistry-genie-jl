@@ -6,7 +6,7 @@ function ligand_concentrations()
     collect(range(start=0.0, stop=2.5e-3, length=100))
 end
 
-function hill_eqn(ka, n)
+function hill_eqn(ka::Float64, n::Float64)
     function hill(ligand_concentration)
         ligand_concentration^n / (ka^n + ligand_concentration^n)
     end

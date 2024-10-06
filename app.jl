@@ -1,11 +1,12 @@
 module App
 using Main.StatisticAnalysis
+using Main.Hill
 using GenieFramework, PlotlyBase
 @genietools
 
 @app begin
     @out trace1 = [histogram(x=[])]
-    @out trace2 = [PlotlyBase.scatter(x=[1,2,3], y=[1,2,3])]
+    @out trace2 = [PlotlyBase.scatter(x=ligand_concentrations(), y=hill_eqn(1.0e-3, 1.0))]
     @out layout1 = PlotlyBase.Layout(title="Histogram plot")
     @out layout2 = PlotlyBase.Layout(title="Line plot")
     @in N = 0
