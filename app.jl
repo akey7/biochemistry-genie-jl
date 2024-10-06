@@ -4,14 +4,14 @@ using GenieFramework, PlotlyBase
 @genietools
 
 @app begin
-    @out trace = [histogram(x=[])]
-    @out layout = PlotlyBase.Layout(title="Histogram plot")
+    @out trace1 = [histogram(x=[])]
+    @out layout1 = PlotlyBase.Layout(title="Histogram plot")
     @in N = 0
     @out m = 0.0
     @onchange N begin
         x = gen_numbers(N)
         m = calc_mean(x)
-        trace = [histogram(x=x)]
+        trace1 = [histogram(x=x)]
     end
 end
 
@@ -21,7 +21,7 @@ function ui()
         h1("A simple dashboard"),
         slider(1:1000, :N),
         p("The average of {{N}} random numbers is {{m}}", class="st-module"),
-        plot(:trace, layout=:layout)
+        plot(:trace1, layout=:layout1)
     ])
 ])
 end
