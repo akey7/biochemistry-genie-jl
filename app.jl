@@ -1,18 +1,14 @@
 module App
-
-using GenieFramework
+using Main.StatisticAnalysis
+using GenieFramework, PlotlyBase
 @genietools
 
 @app begin
-  @in foo = "Genie"
+    #reactive code goes here
 end
 
 function ui()
-  [
-    h1("My First Genie App")
-    input("Enter your name", :foo)
-    p("Hello {{foo}}!")
-  ]
+    p("") #initialized to an empty paragraph
 end
 
 @page("/", ui)
