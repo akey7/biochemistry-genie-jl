@@ -6,12 +6,13 @@ using GenieFramework, PlotlyBase
 @app begin
     @out trace2 =
         [PlotlyBase.scatter(x = ligand_concentrations(), y = hill_eqn(1.0e-3, 1.0))]
-    @out layout2 = PlotlyBase.Layout(title = "Line plot")
+    @out layout2 = PlotlyBase.Layout(title = "n = 1.0", yaxis = attr(range=[0, 1]))
     @in hill_coeff_in = 1.0
     @out hill_coeff_out = 1.0
     @onchange hill_coeff_in begin
         hill_coeff_out = round(hill_coeff_in, digits=2)
         trace2 = [PlotlyBase.scatter(x = ligand_concentrations(), y = hill_eqn(1.0e-3, hill_coeff_in))]
+        layout2 = PlotlyBase.Layout(title = "n = $hill_coeff_out", yaxis = attr(range=[0, 1]))
     end
 end
 
