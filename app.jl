@@ -45,10 +45,8 @@ end
     @out trace2 = hill_eqn_trace(1.0)
     @out layout2 = hill_eqn_layout(1.0)
     @in hill_coeff_in = 1.0
-    @out hill_coeff_out = 1.0
 
     @onchange hill_coeff_in begin
-        hill_coeff_out = round(hill_coeff_in, digits = 2)
         trace2 = hill_eqn_trace(hill_coeff_in)
         layout2 = hill_eqn_layout(hill_coeff_in)
     end
@@ -66,7 +64,6 @@ function ui()
                     :hill_coeff_in,
                     labelalways = true,
                 ),
-                p("Hill coefficient: {{hill_coeff_out}}"),
                 plot(:trace2, layout = :layout2),
             ],
         ),
