@@ -57,7 +57,7 @@ function ui()
             [
                 h4("Hill Equation"),
                 p("Select value for Hill coefficient (n):"),
-                slider(range(start = 0.1, stop = 4.0, length = 20), :hill_coeff_in),
+                slider(range(start = 0.1, stop = 4.1, step = 0.4), :hill_coeff_in, labelalways = true),
                 p("Hill coefficient: {{hill_coeff_out}}"),
                 plot(:trace2, layout = :layout2),
             ],
