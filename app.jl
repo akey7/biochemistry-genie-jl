@@ -10,10 +10,22 @@ end
 function hill_eqn_layout(hill_coeff)
     hill_coeff_formatted = round(hill_coeff, digits = 2)
 
+    xaxis_tick_values = range(minimum(ligand_concentrations()), maximum(ligand_concentrations()), length=5)
+    xaxis_tick_labels = string.(xaxis_tick_values)
+
+
     PlotlyBase.Layout(
         title = "n = $hill_coeff_formatted",
-        yaxis = attr(range = [0, 1], title = "Fraction of Sites Bound"),
+        yaxis = attr(
+            tickmode = "auto",
+            nticks = 5,
+            range = [0, 1], 
+            title = "Fraction of Sites Bound"
+        ),
         xaxis = attr(
+            tickmode = "array",
+            tickvals = xaxis_tick_values,
+            ticktext = xaxis_tick_labels,
             range = [minimum(ligand_concentrations()), maximum(ligand_concentrations())],
             title = "[L]",
         ),
