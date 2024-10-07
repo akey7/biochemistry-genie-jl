@@ -1,6 +1,8 @@
 module App
+using Printf
 using Main.Hill
-using GenieFramework, PlotlyBase
+using GenieFramework
+using PlotlyBase
 @genietools
 
 function hill_eqn_trace(hill_coeff)
@@ -10,9 +12,8 @@ end
 function hill_eqn_layout(hill_coeff)
     hill_coeff_formatted = round(hill_coeff, digits = 2)
 
-    xaxis_tick_values = range(minimum(ligand_concentrations()), maximum(ligand_concentrations()), length=5)
-    xaxis_tick_labels = string.(xaxis_tick_values)
-
+    xtick_vals = range(minimum(ligand_concentrations()), maximum(ligand_concentrations()), length=5)
+    xtick_text = [@sprintf("%.2e", xtick_val) for xtick_val ∈ xtick_vals]
 
     PlotlyBase.Layout(
         title = "n = $hill_coeff_formatted",
@@ -24,8 +25,8 @@ function hill_eqn_layout(hill_coeff)
         ),
         xaxis = attr(
             tickmode = "array",
-            tickvals = xaxis_tick_values,
-            ticktext = xaxis_tick_labels,
+            tickvals = xtick_vals,
+            ticktext = xtick_text,
             range = [minimum(ligand_concentrations()), maximum(ligand_concentrations())],
             title = "[L]",
         ),
