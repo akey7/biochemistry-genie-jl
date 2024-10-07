@@ -15,12 +15,16 @@ function hill_eqn_layout(hill_coeff)
     xtick_vals = range(minimum(ligand_concentrations()), maximum(ligand_concentrations()), length=5)
     xtick_text = [@sprintf("%.2e", xtick_val) for xtick_val ∈ xtick_vals]
 
+    ytick_vals = range(0.0, 1.0, length = 5)
+    ytick_text = [@sprintf("%.2f", yt) for yt ∈ ytick_vals]
+
     PlotlyBase.Layout(
         title = "n = $hill_coeff_formatted",
         yaxis = attr(
-            tickmode = "auto",
-            nticks = 5,
-            range = [0, 1], 
+            tickmode = "array",
+            tickvals = ytick_vals,
+            ticktext = ytick_text,
+            range = [0.0, 1.0], 
             title = "Fraction of Sites Bound"
         ),
         xaxis = attr(
