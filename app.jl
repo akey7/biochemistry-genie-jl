@@ -12,7 +12,11 @@ end
 function hill_eqn_layout(hill_coeff)
     hill_coeff_formatted = round(hill_coeff, digits = 2)
 
-    xtick_vals = range(minimum(ligand_concentrations()), maximum(ligand_concentrations()), length=5)
+    xtick_vals = range(
+        minimum(ligand_concentrations()),
+        maximum(ligand_concentrations()),
+        length = 5,
+    )
     xtick_text = [@sprintf("%.2e", xtick_val) for xtick_val ∈ xtick_vals]
 
     ytick_vals = range(0.0, 1.0, length = 5)
@@ -24,8 +28,8 @@ function hill_eqn_layout(hill_coeff)
             tickmode = "array",
             tickvals = ytick_vals,
             ticktext = ytick_text,
-            range = [0.0, 1.0], 
-            title = "Fraction of Sites Bound"
+            range = [0.0, 1.0],
+            title = "Fraction of Sites Bound",
         ),
         xaxis = attr(
             tickmode = "array",
@@ -57,7 +61,11 @@ function ui()
             [
                 h4("Hill Equation"),
                 p("Select value for Hill coefficient (n):"),
-                slider(range(start = 0.1, stop = 4.1, step = 0.4), :hill_coeff_in, labelalways = true),
+                slider(
+                    range(start = 0.1, stop = 4.1, step = 0.4),
+                    :hill_coeff_in,
+                    labelalways = true,
+                ),
                 p("Hill coefficient: {{hill_coeff_out}}"),
                 plot(:trace2, layout = :layout2),
             ],
