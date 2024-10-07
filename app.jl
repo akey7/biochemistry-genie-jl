@@ -8,7 +8,7 @@ function hill_eqn_trace(hill_coeff)
 end
 
 function hill_eqn_layout(hill_coeff)
-    hill_coeff_formatted = round(hill_coeff, digits=2)
+    hill_coeff_formatted = round(hill_coeff, digits = 2)
 
     PlotlyBase.Layout(
         title = "n = $hill_coeff_formatted",
