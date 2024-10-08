@@ -2,3 +2,5 @@
 GenieFramework = "a59fdf5c-6bf0-4f5d-949c-a137c9e2f353"
 JuliaFormatter = "98e50ef6-434e-11e9-1051-2b60c6c9e899"
 PlotlyBase = "a03496cd-edff-5a9b-9e67-9cda94a718b5"
+Reactive = "a223df75-4e93-5b7c-acf9-bdd599c0f4de"
+Stipple = "4acbeb90-81a0-11ea-1966-bdaff8155998"
