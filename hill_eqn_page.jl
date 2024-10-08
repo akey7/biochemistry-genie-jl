@@ -5,11 +5,11 @@ using GenieFramework
 using PlotlyBase
 @genietools
 
-function hill_eqn_trace(hill_coeff)
+function hill_eqn_trace(hill_coeff::Float64)
     [PlotlyBase.scatter(x = ligand_concentrations(), y = hill_eqn(1.0e-3, hill_coeff))]
 end
 
-function hill_eqn_layout(hill_coeff)
+function hill_eqn_layout(hill_coeff::Float64)
     hill_coeff_formatted = round(hill_coeff, digits = 2)
 
     xtick_vals = range(

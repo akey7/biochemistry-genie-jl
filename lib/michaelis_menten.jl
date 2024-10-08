@@ -14,7 +14,7 @@ function vmax_range()
     range(start=1.0e-3, stop=3.0e-3, length=20)
 end
 
-function mm_eqn(vmax, km)
+function mm_eqn(vmax::Float64, km::Float64)
     function mm(substrate_concentration)
         vmax * substrate_concentration / (km + substrate_concentration)
     end

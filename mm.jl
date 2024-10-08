@@ -5,14 +5,14 @@ using GenieFramework
 using PlotlyBase
 @genietools
 
-km_cache = 0.0
-vmax_cache = 0.0
+km_cache::Float64 = 0.0
+vmax_cache::Float64 = 0.0
 
-function set_vmax_cache(vmax)
+function set_vmax_cache(vmax::Float64)
     global vmax_cache = vmax
 end
 
-function set_km_cache(km)
+function set_km_cache(km::Float64)
     global km_cache = km
 end
 
