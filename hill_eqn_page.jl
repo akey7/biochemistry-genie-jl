@@ -53,22 +53,17 @@ end
 end
 
 function hill_eqn_ui()
-    row([
-        cell(
-            class = "st-col col-6",
-            [
-                a("Return to demonstration list", href = "/"),
-                h4("Hill Equation"),
-                p("Select value for Hill coefficient (n):"),
-                slider(
-                    range(start = 0.1, stop = 4.0, length = 20),
-                    :hill_coeff_in,
-                    labelalways = true,
-                ),
-                plot(:trace2, layout = :layout2),
-            ],
+    [
+        a("Return to demonstration list", href = "/"),
+        h4("Hill Equation"),
+        p("Select value for Hill coefficient (n):"),
+        slider(
+            range(start = 0.1, stop = 4.0, length = 20),
+            :hill_coeff_in,
+            labelalways = true,
         ),
-    ])
+        plot(:trace2, layout = :layout2),
+    ]
 end
 
 
