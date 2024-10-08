@@ -5,6 +5,17 @@ using GenieFramework
 using PlotlyBase
 @genietools
 
+km_cache = 0.0
+vmax_cache = 0.0
+
+function set_vmax_cache(vmax)
+    global vmax_cache = vmax
+end
+
+function set_km_cache(km)
+    global km_cache = km
+end
+
 function mm_trace()
     [PlotlyBase.scatter(x = substrate_concentrations(), y = mm_eqn(vmax_cache, km_cache))]
 end
