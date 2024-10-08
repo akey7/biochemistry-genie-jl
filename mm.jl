@@ -52,6 +52,12 @@ end
     @in km_in = km_midpoint
     @out layout = mm_layout()
     @out trace = mm_trace()
+
+    @onchange km_in begin
+        set_km_cache(km_in)
+        trace = mm_trace()
+        layout = mm_layout()
+    end
 end
 
 function mm_ui()
