@@ -58,6 +58,12 @@ end
         trace = mm_trace()
         layout = mm_layout()
     end
+
+    @onchange vmax_in begin
+        set_vmax_cache(vmax_in)
+        trace = mm_trace()
+        layout = mm_layout()
+    end
 end
 
 function mm_ui()
