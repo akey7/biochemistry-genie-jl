@@ -62,14 +62,16 @@ function mm_ui()
         a("Return to demonstration list", href = "/"),
         h4("Michaelis-Menten"),
         p("Select a Vmax:"),
-        GenieFramework.slider(
-            range(start = 1, stop = 10, length = 20),
+        slider(
+            range(start = vmax_min, stop = vmax_max, length = 20),
             :vmax_in,
+            labelalways = true,
         ),
         p("Select a Km:"),
-        GenieFramework.slider(
-            range(start = 1, stop = 10, length = 20),
-            :km_in
+        slider(
+            range(start = km_min, stop = km_max, length = 20),
+            :km_in,
+            labelalways = true,
         ),
         plot(:trace, layout=:layout)
     ]
