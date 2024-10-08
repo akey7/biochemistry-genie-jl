@@ -5,13 +5,13 @@ using GenieFramework
 using PlotlyBase
 @genietools
 
-function mm_trace(vmax, km)
-    [PlotlyBase.scatter(x = substrate_concentrations(), y = mm_eqn(vmax, km))]
+function mm_trace()
+    [PlotlyBase.scatter(x = substrate_concentrations(), y = mm_eqn(vmax_cache, km_cache))]
 end
 
-function mm_layout(vmax, km)
-    km_formatted = @sprintf("%.2e", km)
-    vmax_formatted = @sprintf("%.2e", vmax)
+function mm_layout()
+    km_formatted = @sprintf("%.2e", km_cache)
+    vmax_formatted = @sprintf("%.2e", vmax_cache)
     max_vmax = 3.0e-3
 
     xtick_vals = range(
@@ -46,10 +46,12 @@ end
 @app begin
     vmax_midpoint = (minimum(vmax_range()) + maximum(vmax_range())) / 2.0
     km_midpoint = (minimum(km_range()) + maximum(km_range())) / 2.0
+    set_vmax_cache(vmax_midpoint)
+    set_km_cache(km_midpoint)
     @in vmax_in = vmax_midpoint
     @in km_in = km_midpoint
-    @out layout = mm_layout(vmax_midpoint, km_midpoint)
-    @out trace = mm_trace(vmax_midpoint, km_midpoint)
+    @out layout = mm_layout()
+    @out trace = mm_trace()
 end
 
 function mm_ui()
