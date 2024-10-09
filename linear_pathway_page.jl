@@ -12,8 +12,8 @@ using Main.LinearPathway
 
     @in Range_r = RangeData(initial_input_2_off_minute:initial_input_2_on_minute)
 
-    @out input_2_off_minute = -1
-    @out input_2_on_minute = -1
+    @out input_2_off_minute = 10
+    @out input_2_on_minute = 60
 
     @onchange Range_r begin
         input_2_off_minute = Range_r["min"]
