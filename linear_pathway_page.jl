@@ -6,22 +6,6 @@ using Main.LinearPathway
 
 @genietools
 
-# using PlotlyJS
-
-# # Data for the lines
-# x = 1:10
-# y1 = rand(10)  # First line data
-# y2 = rand(10)  # Second line data
-# y3 = rand(10)  # Third line data
-
-# # Create traces for each line
-# trace1 = scatter(x=x, y=y1, mode="lines", name="Line 1")
-# trace2 = scatter(x=x, y=y2, mode="lines", name="Line 2")
-# trace3 = scatter(x=x, y=y3, mode="lines", name="Line 3")
-
-# # Combine the traces into a single plot
-# plot([trace1, trace2, trace3], Layout(title="Multiple Line Plot"))
-
 function trajectory_layout(config::Dict{Symbol, Any})
     PlotlyBase.Layout(title = "Trajectory")
 end
