@@ -4,6 +4,7 @@ using GenieFramework
 
 function ui()
     [
+        a("Return to demonstration list", href = "/"),
         h4("Linear pathway!")
     ]
     
