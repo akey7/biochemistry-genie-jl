@@ -4,7 +4,7 @@ module LinearPathway
 # EXPORTS FROM MODULE FOR USE BY UI                                 #
 #####################################################################
 
-export trajectory, fig_5a_defaults
+export trajectory, fig_5a_defaults, minutes_to_step, step_to_minutes
 
 #####################################################################
 # FUNCTION TO CALCULATE TRAJECTORY                                  #
@@ -71,12 +71,12 @@ function fig_5a_defaults()
     )
 end
 
-function min_input_2_off_second()
-    5.0
+function minutes_to_step(minutes)
+    Int64(minutes * 1000 / 100)
 end
 
-function max_input_2_on_second()
-    95.0
+function step_to_minutes(step)
+    Int64(round(step * 100 / 1000))
 end
 
 end
