@@ -57,16 +57,26 @@ end
 # REASONABLE DEFAULTS TO RECREATE FIG 5A                            #
 #####################################################################
 
-fig_5a_defaults = Dict(
-    :duration_minutes => 100, 
-    :steps => 1000, 
-    :input1_level => 0.1, 
-    :input_2_on_level => 0.99,
-    :input_2_off_level => 0.01,
-    :input_2_turn_off_step => 101, 
-    :input_2_turn_on_step => 601,
-    :h42 => 0.75,
-    :initial_conditions => [1.0, 1.0, 1.0, 1.0, 1.0]
-)
+function fig_5a_defaults()
+    Dict(
+        :duration_minutes => 100, 
+        :steps => 1000, 
+        :input1_level => 0.1, 
+        :input_2_on_level => 0.99,
+        :input_2_off_level => 0.01,
+        :input_2_turn_off_step => 101, 
+        :input_2_turn_on_step => 601,
+        :h42 => 0.75,
+        :initial_conditions => [1.0, 1.0, 1.0, 1.0, 1.0]
+    )
+end
+
+function min_input_2_off_second()
+    5.0
+end
+
+function max_input_2_on_second()
+    95.0
+end
 
 end
