@@ -1,13 +1,6 @@
 module LinearPathway
 
 #####################################################################
-# IMPORT MODULES                                                    #
-#####################################################################
-
-using Plots
-using Printf
-
-#####################################################################
 # EXPORTS FROM MODULE FOR USE BY UI                                 #
 #####################################################################
 
@@ -55,13 +48,7 @@ function trajectory(c)
         x[i, 3] = x3 + h*(2*x2^0.75 - 2*x3^0.4)
         x[i, 4] = x4 + h*(2*x3^0.4 - in2*x4^0.5 - x2^h42*x4^0.5)
         x[i, 5] = x5 + h*(x2^h42*x4^0.5 - x5^0.5)
-
-        if i % 10 == 0
-            println("Trajectory calculation iteration $i")
-        end
     end
-
-    println("Trajectory calculation finished")
 
     Dict(:x => x, :inputs => in)
 end
