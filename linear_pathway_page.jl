@@ -48,7 +48,7 @@ function ui()
         p("Select Input 2 availability (in minutes):"),
         plot(:traces, layout = :layout),
         GenieFramework.range(5:5:90, :Range_r, label = true),
-        p("Off: {{input_2_off_minute}} On: {{input_2_on_minute}}")
+        p("Input 2 turns off at {{input_2_off_minute}} minutes and turns on at {{input_2_on_minute}} minutes.")
     ]
     
 end
