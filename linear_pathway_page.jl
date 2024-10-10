@@ -49,6 +49,9 @@ end
         new_config = fig_5a_defaults()
         new_config[:input_2_turn_off_step] = minutes_to_step(input2OffMinute)
         new_config[:input_2_turn_on_step] = minutes_to_step(input2OnMinute)
+
+        @info "@onchange minuterange $(string(new_config))"
+
         traces = trajectory_traces(new_config)
         layout = trajectory_layout(new_config)
     end
