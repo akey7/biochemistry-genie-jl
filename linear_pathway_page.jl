@@ -43,6 +43,9 @@ end
     @onchange minuterange begin
         input2OffMinute = minuterange["min"]
         input2OnMinute = minuterange["max"]
+
+        @info "@onchange minuterange: $input2OffMinute $input2OnMinute"
+
         new_config = fig_5a_defaults()
         new_config[:input_2_turn_off_step] = minutes_to_step(input2OffMinute)
         new_config[:input_2_turn_on_step] = minutes_to_step(input2OnMinute)
