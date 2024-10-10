@@ -1,4 +1,4 @@
-module HillEqnPage
+module HillPage
 using Printf
 using Main.Hill
 using GenieFramework

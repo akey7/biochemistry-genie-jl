@@ -55,3 +55,6 @@ output/
 
 # Ignore logs
 *.log
+
+# Build artifacts from Genie
+build/
