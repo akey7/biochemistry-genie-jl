@@ -7,12 +7,11 @@ using Main.LinearPathway
 @genietools
 
 function trajectory_layout(config::Dict{Symbol, Any})
-    # @info "trajectory_layout(): $(config[:input_2_turn_off_step]) to $(config[:input_2_turn_on_step])"
-
     off_minute = step_to_minutes(config[:input_2_turn_off_step])
     on_minute = step_to_minutes(config[:input_2_turn_on_step])
     title = "Input 2: off at $off_minute minutes, on at $on_minute minutes."
-    
+    @info "trajectory_layout(): $title"
+
     PlotlyBase.Layout(title = title)
 end
 
@@ -50,9 +49,6 @@ end
         new_config[:input_2_turn_off_step] = minutes_to_step(input_2_off_minute)
         new_config[:input_2_turn_on_step] = minutes_to_step(input_2_on_minute)
         traces = trajectory_traces(new_config)
-
-        @info "@onchange Range_r: $(length(traces))"
-
         layout = trajectory_layout(new_config)
     end
 end
