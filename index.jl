@@ -5,7 +5,8 @@ using GenieFramework
 function ui()
     [
         p(a("Hill Equation", href = "/hill")),
-        a("Michaelis-Menten", href="/mm")
+        p(a("Michaelis-Menten", href="/mm")),
+        p(a("Linear Pathway Page", href="/linear"))
     ]
     
 end
