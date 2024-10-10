@@ -1,5 +1,3 @@
-# use @info "message" for logging!
-
 module LinearPathwayPage
 
 using GenieFramework
