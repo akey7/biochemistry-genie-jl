@@ -1,3 +1,5 @@
+# use @info "message" for logging!
+
 module LinearPathwayPage
 
 using GenieFramework
@@ -46,9 +48,6 @@ end
         new_config[:input_2_turn_on_step] = minutes_to_step(input_2_on_minute)
         traces = trajectory_traces(new_config)
         layout = trajectory_layout(new_config)
-
-        foo = traces[4]["y"][500]
-        @info "@onchange Range_r: $foo"
     end
 end
 
