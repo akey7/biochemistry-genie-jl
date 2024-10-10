@@ -10,14 +10,10 @@ function trajectory_layout(config::Dict{Symbol, Any})
     off_minute = step_to_minutes(config[:input_2_turn_off_step])
     on_minute = step_to_minutes(config[:input_2_turn_on_step])
     title = "Input 2: off at $off_minute minutes, on at $on_minute minutes."
-    @info "trajectory_layout(): $title"
-
     PlotlyBase.Layout(title = title)
 end
 
 function trajectory_traces(config::Dict{Symbol, Any})
-    # @info "trajectory_traces(): $(config[:input_2_turn_off_step]) to $(config[:input_2_turn_on_step])"
-
     x = trajectory(config)[:x]
     time_range = collect(range(start = 0, stop = 100, length = length(x[:, 1])))
 
@@ -50,6 +46,9 @@ end
         new_config[:input_2_turn_on_step] = minutes_to_step(input_2_on_minute)
         traces = trajectory_traces(new_config)
         layout = trajectory_layout(new_config)
+
+        foo = traces[4]["y"][500]
+        @info "@onchange Range_r: $foo"
     end
 end
 
