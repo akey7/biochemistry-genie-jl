@@ -12,20 +12,28 @@ function trajectory_layout(config::Dict{Symbol, Any})
     off_minute = step_to_minutes(config[:input_2_turn_off_step])
     on_minute = step_to_minutes(config[:input_2_turn_on_step])
     title = "Input 2: off at $off_minute minutes, on at $on_minute minutes."
-    PlotlyBase.Layout(title = title)
+    PlotlyBase.Layout(; title = title)
 end
 
 function trajectory_traces(config::Dict{Symbol, Any})
-    x = trajectory(config)[:x]
-    time_range = collect(range(start = 0, stop = 100, length = length(x[:, 1])))
+    # x = trajectory(config)[:x]
+    # time_range = collect(range(start = 0, stop = 100, length = length(x[:, 1])))
 
-    trace1 = scatter(x=time_range, y = x[:, 1], mode = "lines", name = "G6P")
-    trace2 = scatter(x=time_range, y = x[:, 2], mode = "lines", name = "FBP")
-    trace3 = scatter(x=time_range, y = x[:, 3], mode = "lines", name = "3-PGA")
-    trace4 = scatter(x=time_range, y = x[:, 4], mode = "lines", name = "PEP")
-    trace5 = scatter(x=time_range, y = x[:, 5], mode = "lines", name = "Pyruvate")
+    # trace1 = scatter(x=time_range, y = x[:, 1], mode = "lines", name = "G6P")
+    # trace2 = scatter(x=time_range, y = x[:, 2], mode = "lines", name = "FBP")
+    # trace3 = scatter(x=time_range, y = x[:, 3], mode = "lines", name = "3-PGA")
+    # trace4 = scatter(x=time_range, y = x[:, 4], mode = "lines", name = "PEP")
+    # trace5 = scatter(x=time_range, y = x[:, 5], mode = "lines", name = "Pyruvate")
 
-    [trace1, trace2, trace3, trace4, trace5]
+    # [trace1, trace2, trace3, trace4, trace5]
+
+    @info "trajectory_traces(): $(string(config))"
+    inputs = trajectory(config)[:inputs]
+    @info "trajectory_traces(): $(inputs[config[:input_2_turn_off_step]-1, 2]) -> $(inputs[config[:input_2_turn_off_step]+1, 2])"
+
+    time_range = collect(range(start = 0, stop = 100, length = length(inputs[:, 1])))
+    trace1 = PlotlyBase.scatter(x=time_range, y=inputs[:, 2], mode="lines", name="Input 2")
+    [trace1]
 end
 
 @app begin
@@ -49,9 +57,6 @@ end
         new_config = fig_5a_defaults()
         new_config[:input_2_turn_off_step] = minutes_to_step(input2OffMinute)
         new_config[:input_2_turn_on_step] = minutes_to_step(input2OnMinute)
-
-        @info "@onchange minuterange $(string(new_config))"
-
         traces = trajectory_traces(new_config)
         layout = trajectory_layout(new_config)
     end
