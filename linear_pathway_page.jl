@@ -30,22 +30,22 @@ end
 
 @app begin
     initial_config = fig_5a_defaults()
-    initial_input_2_off_minute = step_to_minutes(initial_config[:input_2_turn_off_step])
-    initial_input_2_on_minute = step_to_minutes(initial_config[:input_2_turn_on_step])
+    initial_input2OffMinute = step_to_minutes(initial_config[:input_2_turn_off_step])
+    initial_input2OnMinute = step_to_minutes(initial_config[:input_2_turn_on_step])
 
-    @in Range_r = RangeData(initial_input_2_off_minute:initial_input_2_on_minute)
+    @in minuterange = RangeData(initial_input2OffMinute:initial_input2OnMinute)
 
-    @out input_2_off_minute = 10
-    @out input_2_on_minute = 60
+    @out input2OffMinute = 10
+    @out input2OnMinute = 60
     @out layout = trajectory_layout(initial_config)
     @out traces = trajectory_traces(initial_config)
 
-    @onchange Range_r begin
-        input_2_off_minute = Range_r["min"]
-        input_2_on_minute = Range_r["max"]
+    @onchange minuterange begin
+        input2OffMinute = minuterange["min"]
+        input2OnMinute = minuterange["max"]
         new_config = fig_5a_defaults()
-        new_config[:input_2_turn_off_step] = minutes_to_step(input_2_off_minute)
-        new_config[:input_2_turn_on_step] = minutes_to_step(input_2_on_minute)
+        new_config[:input_2_turn_off_step] = minutes_to_step(input2OffMinute)
+        new_config[:input_2_turn_on_step] = minutes_to_step(input2OnMinute)
         traces = trajectory_traces(new_config)
         layout = trajectory_layout(new_config)
     end
@@ -57,8 +57,8 @@ function ui()
         h4("Linear pathway!"),
         p("Select Input 2 availability (in minutes):"),
         plot(:traces, layout = :layout),
-        GenieFramework.range(5:5:90, :Range_r, label = true),
-        p("Input 2 turns off at {{input_2_off_minute}} minutes and turns on at {{input_2_on_minute}} minutes.")
+        GenieFramework.range(5:5:90, :minuterange, label = true),
+        p("Input 2 turns off at {{input2OffMinute}} minutes and turns on at {{input2OnMinute}} minutes.")
     ]
     
 end
