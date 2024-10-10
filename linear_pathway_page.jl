@@ -31,8 +31,8 @@ function trajectory_traces(config::Dict{Symbol, Any})
     inputs = trajectory(config)[:inputs]
     @info "trajectory_traces(): $(inputs[config[:input_2_turn_off_step]-1, 2]) -> $(inputs[config[:input_2_turn_off_step]+1, 2])"
 
-    time_range = collect(range(start = 0, stop = 100, length = length(inputs[:, 1])))
-    trace1 = PlotlyBase.scatter(x=time_range, y=inputs[:, 2], mode="lines", name="Input 2")
+    time_range = collect(range(start = 0, stop = 100, length = length(inputs[1:10:end, 2])))
+    trace1 = PlotlyBase.scatter(x=time_range, y=inputs[1:10:end, 2], mode="lines", name="Input 2")
     [trace1]
 end
 
@@ -52,13 +52,13 @@ end
         input2OffMinute = minuterange["min"]
         input2OnMinute = minuterange["max"]
 
-        @info "@onchange minuterange: $input2OffMinute $input2OnMinute"
-
         new_config = fig_5a_defaults()
         new_config[:input_2_turn_off_step] = minutes_to_step(input2OffMinute)
         new_config[:input_2_turn_on_step] = minutes_to_step(input2OnMinute)
         traces = trajectory_traces(new_config)
         layout = trajectory_layout(new_config)
+
+        @info "@onchange minuterange $(string(traces))"
     end
 end
 
