@@ -7,7 +7,7 @@ using Main.LinearPathway
 @genietools
 
 function trajectory_layout(config::Dict{Symbol, Any})
-    @info "trajectory_layout(): $(config[:input_2_turn_off_step]) to $(config[:input_2_turn_on_step])"
+    # @info "trajectory_layout(): $(config[:input_2_turn_off_step]) to $(config[:input_2_turn_on_step])"
 
     off_minute = step_to_minutes(config[:input_2_turn_off_step])
     on_minute = step_to_minutes(config[:input_2_turn_on_step])
@@ -17,7 +17,7 @@ function trajectory_layout(config::Dict{Symbol, Any})
 end
 
 function trajectory_traces(config::Dict{Symbol, Any})
-    @info "trajectory_traces(): $(config[:input_2_turn_off_step]) to $(config[:input_2_turn_on_step])"
+    # @info "trajectory_traces(): $(config[:input_2_turn_off_step]) to $(config[:input_2_turn_on_step])"
 
     x = trajectory(config)[:x]
     time_range = collect(range(start = 0, stop = 100, length = length(x[:, 1])))
@@ -50,6 +50,9 @@ end
         new_config[:input_2_turn_off_step] = minutes_to_step(input_2_off_minute)
         new_config[:input_2_turn_on_step] = minutes_to_step(input_2_on_minute)
         traces = trajectory_traces(new_config)
+
+        @info "@onchange Range_r: $(length(traces))"
+
         layout = trajectory_layout(new_config)
     end
 end
